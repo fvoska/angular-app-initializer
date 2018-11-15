@@ -1,0 +1,14 @@
+<div>ID: {{ pokemon.id }}</div>
+<div>Name: {{ pokemon.name }}</div>
+
+<ng-container *ngIf="myPokemon$ | async as myPokemon; else save">
+  <button *ngIf="myPokemon.id === pokemon.id; else save" (click)="onClearPokemon()">
+    Clear
+  </button>
+</ng-container>
+
+<ng-template #save>
+  <button (click)="onSavePokemon()">
+    Save
+  </button>
+</ng-template>

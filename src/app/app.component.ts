@@ -22,8 +22,6 @@ export class AppComponent implements OnInit {
 
   public ngOnInit(): void {
     this.setupSearch();
-
-    this.myPokemonService.init();
   }
 
   public get myPokemon$(): Observable<Pokemon> {

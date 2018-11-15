@@ -15,12 +15,12 @@ export class MyPokemonService {
     private pokemonFetchingService: PokemonFetchingService,
   ) { }
 
-  public init(): void {
+  public init(): Promise<Pokemon> {
     const savedPokemonId = localStorage.getItem(this.storageKey);
 
-    this.pokemonFetchingService.find(savedPokemonId).pipe(delay(2000)).subscribe((pokemon) => {
+    return this.pokemonFetchingService.find(savedPokemonId).pipe(tap((pokemon: Pokemon) => {
       this.myPokemon$.next(pokemon);
-    });
+    })).toPromise();
   }
 
   public savePokemon(pokemon: Pokemon) {

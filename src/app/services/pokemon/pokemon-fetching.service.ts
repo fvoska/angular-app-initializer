@@ -15,7 +15,7 @@ export class PokemonFetchingService {
       return of(null);
     }
 
-    return this.http.get(`https://pokeapi.co/api/v2/pokemon/${nameOrId}/`).pipe(
+    return this.http.get(`/api/pokemon/${nameOrId}/`).pipe(
       catchError((e) => {
         return of(null);
       }),

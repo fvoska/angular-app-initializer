@@ -20,7 +20,7 @@ export class MyPokemonService {
 
     return this.pokemonFetchingService.find(savedPokemonId).pipe(tap((pokemon: Pokemon) => {
       this.myPokemon$.next(pokemon);
-    })).toPromise();
+    }), delay(1000)).toPromise();
   }
 
   public savePokemon(pokemon: Pokemon) {
